@@ -1,0 +1,26 @@
+<link href="kudos.css" media="screen" rel="stylesheet" type="text/css" />
+
+<figure data-ng-class="{'kudo':true,'kudoable':true,'active':active,'complete':complete}"
+        ng-mouseenter="start()" ng-mouseleave="end()" ng-click="unkudo()">
+<a class="kudobject">
+        <div class="opening"><div class="circle">&nbsp;</div></div>
+    </a>
+    <a href='' class="count">
+        <span class="num" ng-bind="count"></span>
+        <span class="txt">{{countString}}</span>
+    </a>
+</figure>
+
+
+<!--
+<figure data-ng-class="{'kudo':true,'kudoable':true,'active':active,'complete':complete}"
+        ng-mouseenter="start()" ng-mouseleave="end()" ng-click="unkudo()">
+    <a class="kudobject">
+        <div class="opening"><div class="circle">&nbsp;</div></div>
+    </a>
+    <a href='' class="count">
+        <span class="num" ng-bind="count"></span>
+        <span class="txt">Kudos</span>
+    </a>
+</figure>
+-->

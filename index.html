@@ -1,0 +1,93 @@
+<html ng-app="app">
+<head>
+
+    <title>example</title>
+    <style type="text/css">
+
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+        .big{
+            font-size:100px;
+        }
+
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+</head>
+<body ng-controller="con">
+
+
+
+<kudo crap="fuck()"></kudo>
+
+<script type="text/javascript">
+    var app = angular.module("app",[]);
+    app.directive('kudo',function(){
+        var controller = ['$scope','$timeout',function($scope,$timeout){
+            console.log($scope.countString);
+            $scope.kudo = true;
+            $scope.kudoable = true;
+            $scope.active = false;
+            $scope.complete = false;
+            $scope.count = 0;
+            var timer = null;
+
+            $scope.start=function(){
+                if (!$scope.complete){
+
+                    $scope.active = true;
+                    timer = $timeout(complete, 700);
+                    console.log('start');
+                    crap();
+                }
+
+            };
+
+            $scope.end = function(){
+                if (!$scope.complete){
+                    console.log('canceled');
+                    $scope.active = false;
+                    $timeout.cancel(timer);
+                }
+                console.log('end');
+            };
+
+            $scope.unkudo = function(){
+                if ($scope.complete){
+                    $scope.complete = false;
+                    $scope.count -= 1;
+                }
+                console.log('unkudo');
+            };
+            var complete = function(){
+                $scope.end();
+                $scope.complete = true;
+                $scope.count += 1;
+                console.log('completed');
+            };
+        }];
+
+
+       return {
+           restrict: 'AE',
+           templateUrl: 'kudofigure.html',
+           scope: {
+               crap: '&'
+           },
+           controller: controller
+       }
+    });
+
+    app.controller("con",function($scope,$timeout){
+        $scope.fuck = function(){
+          alert('fuck you!');
+        };
+    });
+</script>
+
+</body>
+</html>
